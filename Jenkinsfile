@@ -1,6 +1,6 @@
 pipeline {
 
-  agent none
+  agent any
 
   environment {
     DOCKER_IMAGE = "nhtua/flask-docker"
@@ -10,7 +10,7 @@ pipeline {
     stage("Test") {
       agent {
           docker {
-            image 'python:3.8-slim-buster'
+            image '3.8-slim-buster'
             args '-u 0:0 -v /tmp:/root/.cache'
           }
       }
