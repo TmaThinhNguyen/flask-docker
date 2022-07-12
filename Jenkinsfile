@@ -1,11 +1,6 @@
 pipeline {
 
-  agent {
-          docker {
-            image 'python:3.8-alpine'
-            args '-u 0:0 -v /tmp:/root/.cache'
-          }
-      }
+  agent any
 
   environment {
     DOCKER_IMAGE = "nhtua/flask-docker"
