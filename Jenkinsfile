@@ -1,6 +1,11 @@
 pipeline {
 
-  agent any
+  agent {
+          docker {
+            image 'python:3.8-alpine'
+            args '-u 0:0 -v /tmp:/root/.cache'
+          }
+      }
 
   environment {
     DOCKER_IMAGE = "nhtua/flask-docker"
@@ -8,12 +13,6 @@ pipeline {
 
   stages {
     stage("Test") {
-      agent {
-          docker {
-            image 'python:3.8-alpine'
-            args '-u 0:0 -v /tmp:/root/.cache'
-          }
-      }
       steps {
         bat "pip install poetry"
         bat "poetry install"
