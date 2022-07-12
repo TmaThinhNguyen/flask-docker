@@ -15,9 +15,9 @@ pipeline {
           }
       }
       steps {
-        sh "pip install poetry"
-        sh "poetry install"
-        sh "poetry run pytest"
+        bat "pip install poetry"
+        bat "poetry install"
+        bat "poetry run pytest"
       }
     }
 
